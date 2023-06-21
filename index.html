@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.3.2/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+
+    <div id="app">
+
+      <div class="nav-bar"> </div>
+
+      <div class="cart">Carrito({{ carro.length }})</div> <!-- Toma el valor que le asignamos en Data en el JS -->
+
+      <product-display :premium="premium" @agregar-al-carro="agregarProductoAlCarro" @quitar-carro="quitarProductoDelCarro">
+                                      <!-- Paso 1 = Los @ son para activar los eventos, el primer nombre lo crea dentro del componente en los metodos de ProductDisplay,
+      que lo que hace es crear el nombre de @ y obtener el id. Paso 2= una vez obtenido eso, en los " " agrego la funcion que va a ejecutar el evento, esto se realiza
+      dentro del main.js porque como el carro tiene que ser global, es decir, tiene que haber uno solo y no se puede repetir como el codigo que podriamos repetir a traves
+      de un componete, con eso ya se ejecutaria la funcion -->
+
+      </product-display> <!-- Una vez importado el componte, lo agrego en mi HTML-->
+
+      
+
+    </div>
+
+    <!-- Importamos la App -->
+    <script src="main.js"></script>
+
+    <!-- Importamos el componente -->
+    <script src="./Componentes/ProductDisplay.js"></script>
+    <script src="./Componentes/ProductDetails.js"></script>
+    <script src="./Componentes/ComentForm.js"></script> <!-- Una vez importado, lo utiliza en el componente <product-display> -->
+    <script src="./Componentes/ListaComentario.js"></script>
+
+    <!-- Montamos la App -->
+    <script> const mountedApp = app.mount('#app') </script>
+
+  </body>
+
+</html>
+
+<!-- ------------------------------------------------------------------------------------------------------------ -->
+<!-- Explicacion div-->
+
+<!-- Aca en este div con el v-for recorro los objetos que declaramos en variedades dentro de JS y por cada elemento en la matriz variedades, se crea un 
+elemento <div> con la clase CSS "color-circle" y le asigno color con el :style ademas de que le asigna un indice (posicion), es decir, 
+  ese circulo va a tener asignado todos los atributos de cada objeto. 
+              
+El atributo :key="variedad.id" se utiliza para ayudar a Vue a realizar un seguimiento de los elementos generados y optimizar la manipulación del DOM.
+
+Con el evento mouseover, cuando paso el mouse sobre los circulos, se llama a la funcion ActualizaVariedad(indice) que esta en JS (y se le pasa el indice
+del circulo en el que este posicionado), y dependiendo del circulo en el que me posicione se realizara alguna accion. En este caso al haber 2 elementos y 
+cuando recorre, en el array de objetos primero esta el verde y segundo el azul, por lo tanto Green (Indice = 0) - Azul (Indice 1) -->
+
+<!-- Explicacion :disable-->
+
+<!-- :disabled="!EnStock" (:disable lo toma verdadero y yo necesito que sea falso porque en Data lo tengo como false por lo tanto lo tengo que convertir), es
+decir, ahora pregunta: :disabled="!EnStock" es esto falso? Si, porque en el data si la cantidad es > 0 es verdadero y no se desabilita, ahora si la cantidad
+<=0 esto sera falto por lo tanto se deshabilitara-->
+
+<!-- ------------------------------------------------------------------------------------------------------------ -->
+
+<!------------ Creando nuesta app VUE ---------->
+
+<!-- La sintaxis de las {{}} nos permiten consultar informacion a nuestra APP VUE (main.js) y poder mostrarla aqui, en si, 
+lo que permite las {{}} es poder ejecutar codigo JS valido dentro de nuestro HTML-->
+      
+<!-- Si llegara a cambiar el valor desde nuestra APP en (main) se actualizara inmediatamente este valor 
+debido a que VUE ES REACTIVO (Maneja las actualizaciones) -->
+
+<!-- "Montamos la App" - Lo que hace aca es montar la APP en el DOM, crea una variable que la iguala a esa app (que es la que importamos en el 
+main.js) .mount a la que le pasaremos un argumento, el cual es el selector del DOM usado para conectar la APP en un sector de nuestro DOM, 
+en este caso, como el div con el id "app" TODO LO QUE HAYA DENTRO DE ESE DIV SE MONTARA EN NUESTRA APP VUE  -->
+
+<!---------- Renderizado condicional ---------->
+<!--  <p v-if="EnStock">Stock</p> <p v-else> Sin stock</p>  SE PUEDE HACER ASI O CON V-SHOW <p v-if="Inventario > 10">Stock</p>
+<p v-else-if='Inventario <= 10 && Inventario > 0'> ultimas unidades!</p> <p v-else="0">Sin stock</p>-->
+
+<!---------- Renderizado de listas ----------->
+<!--  Lo explico con los array de detalles y variadades con el V-FOR (aca se suele utilizar el atriburo :ky para identificar a cada elemento y
+  tener una mayor eficiencia) el uso de claves (key) es específico para el renderizado de listas en Vue.js-->
+
+  <!--------- Manejo de eventos ---------->
+  <!--(puedo usar o el "v-" o el "@") Lo explica con los botones, el mouseover -->
+
+  <!--------- Manejo de clases y estilos ---------->
+  <!--  class="color-circle" :style="{backgroundColor: variedad.color(ESTO LO IDENTIFICA CON EL NOMBRE DEL OBKETO EN JS)}" agrego la clase y el :style 
+        (recordad que todo lo que se escriba de esta manera en HTML es codigo JS, por lo que lo tenfo que escribir asi backgroundColor o background-color entre
+        comillas porque sino JS lo va a interpretar como una resta) Y si tengo un conjuto de estilos hago :style='style' y 
+        en el JS styles:{color: 'red', fontSize: '14px'} -->
+
+<!-- Uso este class binding :class={disabledButton: !EnStock} indicando que agrego la clase disableButton si !EnStock, tambien lo podria hacer asi 
+  :class="[EnStock ? '' : 'disabledButton']" usando TERNARIOS (si es verdadero '' NO PASA NADA : SI ES FALSO, AGREGA LA CLASE)-->
+
+<!---------- Propiedades computadas ---------->
+<!-- Lo podemos pensar como una CALCULADORA, calcula y nos devuelve un valor, por ejemplo aca concatene this.Marca + '-' + this.producto y 
+  el resultado final es Vue Mastery - Medias (ME DEVUELVE UN VALOR)
+  Su beneficio en que guardan en cache el valor lo guarda y solamente lo actualiza cuando es necesario, ejemplo, si Marca llega a cambiar su valor, 
+  la propiedad computada se daria cuenta del cambio lo calcularia y lo mostraria el nuevo valor  
+  EL BOTON DE AGREGAR AL CARRITO COMO LA CANTIDAD ES 0 SIGNIFICA QUE ES FALSO Y LO DESHABILITA-->
