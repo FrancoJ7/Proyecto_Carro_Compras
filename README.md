@@ -12,7 +12,7 @@ El proyecto del carrito de compras tiene como objetivo proporcionar una experien
   
 - **Interactividad:** La interfaz de usuario es interactiva, lo que permite a los usuarios agregar y quitar productos del carrito, así como actualizar la cantidad de productos.
 
-- **Funcionalidad de Carrito:** El carrito de compras muestra los productos seleccionados, su cantidad y el precio total. Los usuarios pueden revisar su selección y proceder al pago.
+- **Funcionalidad de Carrito:** El carrito de compras muestra los productos seleccionados, su cantidad y el precio total. Los usuarios ademas pueden revisar su selección y dejar un comentario.
 
 ## Uso del Repositorio
 
