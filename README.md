@@ -28,4 +28,14 @@ El repositorio contiene los archivos HTML, CSS y JavaScript necesarios para ejec
 
 - **Componentes/:** Esta carpeta contiene los archivos JavaScript de los componentes Vue.js utilizados en el proyecto.
 
+## Tecnologías Utilizadas
+
+- HTML5: Para la estructura del sitio web.
+- CSS3: Para el diseño y estilo del carrito de compras.
+- JavaScript: Para la lógica de interacción del usuario.
+- Vue.js: Para la creación de componentes reutilizables y la gestión del estado de la aplicación.
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, no dudes en abrir un issue o enviar una solicitud de extracción con tus cambios propuestos.
 
