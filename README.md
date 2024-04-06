@@ -39,7 +39,11 @@ El repositorio contiene los archivos HTML, CSS y JavaScript necesarios para ejec
 
 Este proyecto está desplegado y disponible para acceder en GitHub Pages. 
 
-## Contribuciones
+## Contacto
 
-¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, no dudes en abrir un issue o enviar una solicitud de extracción con tus cambios propuestos.
+Si tienes alguna pregunta, sugerencia o simplemente quieres comunicarte conmigo, no dudes en contactarme:
+
+- Correo electrónico: fdjuarez33@gmail.com
+
+¡Gracias por visitar mi proyecto!
 
