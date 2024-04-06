@@ -35,6 +35,10 @@ El repositorio contiene los archivos HTML, CSS y JavaScript necesarios para ejec
 - JavaScript: Para la lógica de interacción del usuario.
 - Vue.js: Para la creación de componentes reutilizables y la gestión del estado de la aplicación.
 
+## Implementación en GitHub Pages
+
+Este proyecto está desplegado y disponible para acceder en GitHub Pages. 
+
 ## Contribuciones
 
 ¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, no dudes en abrir un issue o enviar una solicitud de extracción con tus cambios propuestos.
